@@ -14,18 +14,13 @@
 
 """Default config file"""
 
-from typing import Any, Optional, List, Dict
 from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
 
-from nvidia_tao_core.config.utils.types import (
-    STR_FIELD,
-    INT_FIELD,
-    BOOL_FIELD,
-    FLOAT_FIELD,
-    LIST_FIELD,
-    DICT_FIELD,
-    DATACLASS_FIELD,
-)
+from nvidia_tao_core.config.utils.types import (BOOL_FIELD, DATACLASS_FIELD,
+                                                DICT_FIELD, FLOAT_FIELD,
+                                                INT_FIELD, LIST_FIELD,
+                                                STR_FIELD)
 
 
 @dataclass
@@ -815,6 +810,14 @@ class PPTrainConfig:
         default_value=[0],
         display_name="gpu_ids",
         description="GPU IDs."
+    )
+    patience: int = INT_FIELD(
+        value=-1,
+        default_value=-1,
+        display_name="patience",
+        description="Patience.",
+        valid_min=-1,
+        valid_max="inf"
     )
 
 
